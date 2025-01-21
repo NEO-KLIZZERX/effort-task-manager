@@ -1,12 +1,48 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { TaskList } from "@/components/TaskList";
+import { Task } from "@/types/task";
+import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const { toast } = useToast();
+
+  const handleAddTask = () => {
+    const newTask: Task = {
+      id: Date.now().toString(),
+      title: "",
+      description: "",
+      status: "TODO",
+      priority: "MEDIUM",
+      subtasks: [],
+    };
+    setTasks([newTask, ...tasks]);
+    toast({
+      title: "Task created",
+      description: "A new task has been added to your list.",
+    });
+  };
+
+  const handleUpdateTask = (updatedTask: Task) => {
+    setTasks(tasks.map((t) => (t.id === updatedTask.id ? updatedTask : t)));
+  };
+
+  const handleDeleteTask = (taskId: string) => {
+    setTasks(tasks.filter((t) => t.id !== taskId));
+    toast({
+      title: "Task deleted",
+      description: "The task has been removed from your list.",
+    });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <TaskList
+        tasks={tasks}
+        onAddTask={handleAddTask}
+        onUpdateTask={handleUpdateTask}
+        onDeleteTask={handleDeleteTask}
+      />
     </div>
   );
 };
