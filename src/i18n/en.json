@@ -11,7 +11,11 @@
     },
     "description": "Description",
     "subtasks": "Subtasks",
-    "addSubtask": "Add a subtask..."
+    "addSubtask": "Add a subtask...",
+    "taskTitle": "Task title",
+    "deleteTask": "Delete task",
+    "taskDeleted": "Task deleted",
+    "taskDeletedDesc": "The task has been removed from your list"
   },
   "settings": {
     "title": "Settings",

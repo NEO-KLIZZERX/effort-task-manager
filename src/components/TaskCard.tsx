@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp, Trash2, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Task, SubTask, TaskStatus, TaskPriority } from "@/types/task";
+import { useTranslation } from "react-i18next";
 import {
   Select,
   SelectContent,
@@ -20,6 +21,7 @@ interface TaskCardProps {
 export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [newSubtask, setNewSubtask] = useState("");
+  const { t } = useTranslation();
 
   const handleStatusChange = (value: string) => {
     onUpdate({ ...task, status: value as TaskStatus });
@@ -85,7 +87,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) 
               value={task.title}
               onChange={(e) => onUpdate({ ...task, title: e.target.value })}
               className="flex-1 text-lg font-medium bg-transparent border-none focus:outline-none"
-              placeholder="Task title"
+              placeholder={t('app.taskTitle')}
             />
           </div>
           <div className="flex items-center gap-2">
@@ -95,9 +97,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) 
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="LOW">Low</SelectItem>
-                <SelectItem value="MEDIUM">Medium</SelectItem>
-                <SelectItem value="HIGH">High</SelectItem>
+                <SelectItem value="LOW">{t('app.priority.low')}</SelectItem>
+                <SelectItem value="MEDIUM">{t('app.priority.medium')}</SelectItem>
+                <SelectItem value="HIGH">{t('app.priority.high')}</SelectItem>
               </SelectContent>
             </Select>
             <Button
@@ -116,6 +118,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) 
               size="icon"
               onClick={() => onDelete(task.id)}
               className="text-red-500 hover:text-red-600"
+              title={t('app.deleteTask')}
             >
               <Trash2 className="w-5 h-5" />
             </Button>
@@ -124,17 +127,17 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) 
         {isExpanded && (
           <div className="mt-4 space-y-4">
             <div>
-              <label className="text-sm font-medium text-gray-700">Description</label>
+              <label className="text-sm font-medium text-gray-700">{t('app.description')}</label>
               <textarea
                 value={task.description}
                 onChange={(e) => onUpdate({ ...task, description: e.target.value })}
                 className="mt-1 w-full rounded-md border border-gray-300 shadow-sm p-2 focus:border-primary focus:ring-1 focus:ring-primary"
                 rows={3}
-                placeholder="Add a description..."
+                placeholder={t('app.description')}
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Subtasks</label>
+              <label className="text-sm font-medium text-gray-700">{t('app.subtasks')}</label>
               <div className="mt-2 space-y-2">
                 {task.subtasks.map((subtask) => (
                   <div
@@ -168,7 +171,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) 
                   <Input
                     value={newSubtask}
                     onChange={(e) => setNewSubtask(e.target.value)}
-                    placeholder="Add a subtask..."
+                    placeholder={t('app.addSubtask')}
                     className="flex-1"
                     onKeyPress={(e) => {
                       if (e.key === "Enter") {

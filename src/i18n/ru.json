@@ -11,7 +11,11 @@
     },
     "description": "Описание",
     "subtasks": "Подзадачи",
-    "addSubtask": "Добавить подзадачу..."
+    "addSubtask": "Добавить подзадачу...",
+    "taskTitle": "Название задачи",
+    "deleteTask": "Удалить задачу",
+    "taskDeleted": "Задача удалена",
+    "taskDeletedDesc": "Задача была удалена из вашего списка"
   },
   "settings": {
     "title": "Настройки",
