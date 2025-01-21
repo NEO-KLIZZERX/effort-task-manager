@@ -1,0 +1,23 @@
+{
+  "app": {
+    "title": "EFFORT Планировщик Задач",
+    "subtitle": "От Eclipse Forge Studio",
+    "addTask": "Добавить задачу",
+    "noTasks": "Пока нет задач. Создайте свою первую задачу!",
+    "priority": {
+      "low": "Низкий",
+      "medium": "Средний",
+      "high": "Высокий"
+    },
+    "description": "Описание",
+    "subtasks": "Подзадачи",
+    "addSubtask": "Добавить подзадачу..."
+  },
+  "settings": {
+    "title": "Настройки",
+    "language": "Язык",
+    "theme": "Тема",
+    "light": "Светлая",
+    "dark": "Темная"
+  }
+}

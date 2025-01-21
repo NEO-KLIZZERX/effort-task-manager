@@ -1,0 +1,23 @@
+{
+  "app": {
+    "title": "EFFORT Task Manager",
+    "subtitle": "By Eclipse Forge Studio",
+    "addTask": "Add Task",
+    "noTasks": "No tasks yet. Create your first task!",
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "description": "Description",
+    "subtasks": "Subtasks",
+    "addSubtask": "Add a subtask..."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark"
+  }
+}
