@@ -37,6 +37,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <div className="text-center pt-8 pb-4">
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">EFFORT Task Manager</h1>
+        <p className="text-gray-600 text-sm">By Eclipse Forge Studio</p>
+      </div>
       <TaskList
         tasks={tasks}
         onAddTask={handleAddTask}
