@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Pencil, Eraser, Square, Circle, Undo, Redo, Download } from "lucide-react";
+import { Pencil, Eraser, Square, Circle, Undo, Redo, Download, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 type PixelGrid = string[][];
@@ -9,18 +9,16 @@ type HistoryEntry = { grid: PixelGrid; };
 
 const Index = () => {
   const { toast } = useToast();
-  const [activeColor, setActiveColor] = useState("#000000");
+  const [activeColor, setActiveColor] = useState("#9b87f5");
   const [activeTool, setActiveTool] = useState<"pencil" | "eraser" | "square" | "circle">("pencil");
   const [canvasSize, setCanvasSize] = useState({ width: 32, height: 32 });
   const [pixelSize, setPixelSize] = useState(20);
   const [isDrawing, setIsDrawing] = useState(false);
   const [startPixel, setStartPixel] = useState<{ x: number; y: number } | null>(null);
   
-  // История действий для undo/redo
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [currentStep, setCurrentStep] = useState(-1);
   
-  // Инициализация пустой сетки
   const [pixelGrid, setPixelGrid] = useState<PixelGrid>(() => 
     Array(canvasSize.height).fill(null).map(() => 
       Array(canvasSize.width).fill("")
@@ -28,21 +26,12 @@ const Index = () => {
   );
 
   const tools = [
-    { name: "pencil", icon: Pencil },
-    { name: "eraser", icon: Eraser },
-    { name: "square", icon: Square },
-    { name: "circle", icon: Circle },
+    { name: "pencil", icon: Pencil, tooltip: "Карандаш" },
+    { name: "eraser", icon: Eraser, tooltip: "Ластик" },
+    { name: "square", icon: Square, tooltip: "Квадрат" },
+    { name: "circle", icon: Circle, tooltip: "Круг" },
   ];
 
-  // Сохранение текущего состояния в историю
-  const saveToHistory = useCallback((newGrid: PixelGrid) => {
-    const newHistory = history.slice(0, currentStep + 1);
-    newHistory.push({ grid: JSON.parse(JSON.stringify(newGrid)) });
-    setHistory(newHistory);
-    setCurrentStep(newHistory.length - 1);
-  }, [history, currentStep]);
-
-  // Функции для рисования
   const drawPixel = (x: number, y: number, color: string) => {
     const newGrid = [...pixelGrid];
     if (x >= 0 && x < canvasSize.width && y >= 0 && y < canvasSize.height) {
@@ -107,7 +96,6 @@ const Index = () => {
     setPixelGrid(newGrid);
   };
 
-  // Обработчики событий мыши
   const handleMouseDown = (x: number, y: number) => {
     setIsDrawing(true);
     setStartPixel({ x, y });
@@ -142,7 +130,13 @@ const Index = () => {
     saveToHistory(pixelGrid);
   };
 
-  // Функции undo/redo
+  const saveToHistory = useCallback((newGrid: PixelGrid) => {
+    const newHistory = history.slice(0, currentStep + 1);
+    newHistory.push({ grid: JSON.parse(JSON.stringify(newGrid)) });
+    setHistory(newHistory);
+    setCurrentStep(newHistory.length - 1);
+  }, [history, currentStep]);
+
   const undo = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
@@ -157,7 +151,6 @@ const Index = () => {
     }
   };
 
-  // Функция сохранения
   const saveImage = () => {
     const canvas = document.createElement('canvas');
     canvas.width = canvasSize.width;
@@ -175,7 +168,7 @@ const Index = () => {
       });
 
       const link = document.createElement('a');
-      link.download = 'pixel-art.png';
+      link.download = 'ef-pixelart.png';
       link.href = canvas.toDataURL();
       link.click();
       
@@ -186,22 +179,22 @@ const Index = () => {
     }
   };
 
-  // Инициализация истории при первой загрузке
   useEffect(() => {
     saveToHistory(pixelGrid);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto space-y-4">
-        <header className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800">Pixel Art Studio</h1>
-          <p className="text-gray-600">Create beautiful pixel art</p>
+    <div className="min-h-screen bg-[#221F26] p-4">
+      <div className="max-w-6xl mx-auto space-y-6">
+        <header className="text-center space-y-2">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#D946EF] text-transparent bg-clip-text">
+            EF PixelArts
+          </h1>
+          <p className="text-[#C8C8C9]">Create amazing pixel art masterpieces</p>
         </header>
 
-        <div className="bg-white rounded-lg shadow-lg p-4">
-          {/* Toolbar */}
-          <div className="flex gap-4 mb-4">
+        <div className="bg-[#2A2630] rounded-xl shadow-xl p-6 space-y-6">
+          <div className="flex flex-wrap gap-4 items-center justify-between bg-[#332F3B] p-4 rounded-lg">
             <div className="flex gap-2">
               {tools.map((tool) => (
                 <Button
@@ -209,37 +202,63 @@ const Index = () => {
                   variant={activeTool === tool.name ? "default" : "outline"}
                   size="icon"
                   onClick={() => setActiveTool(tool.name as typeof activeTool)}
+                  className={`hover:bg-[#9b87f5]/20 ${
+                    activeTool === tool.name ? "bg-[#9b87f5] text-white" : "bg-transparent text-[#C8C8C9]"
+                  }`}
+                  title={tool.tooltip}
                 >
                   <tool.icon className="h-4 w-4" />
                 </Button>
               ))}
             </div>
 
-            <Input
-              type="color"
-              value={activeColor}
-              onChange={(e) => setActiveColor(e.target.value)}
-              className="w-12 h-10 p-1"
-            />
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Palette className="h-4 w-4 text-[#C8C8C9]" />
+                <Input
+                  type="color"
+                  value={activeColor}
+                  onChange={(e) => setActiveColor(e.target.value)}
+                  className="w-12 h-10 p-1 bg-transparent border-[#9b87f5] cursor-pointer"
+                />
+              </div>
 
-            <div className="flex gap-2">
-              <Button variant="outline" size="icon" onClick={undo}>
-                <Undo className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon" onClick={redo}>
-                <Redo className="h-4 w-4" />
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={undo}
+                  className="hover:bg-[#9b87f5]/20 bg-transparent text-[#C8C8C9]"
+                  title="Отменить"
+                >
+                  <Undo className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={redo}
+                  className="hover:bg-[#9b87f5]/20 bg-transparent text-[#C8C8C9]"
+                  title="Повторить"
+                >
+                  <Redo className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={saveImage}
+                className="hover:bg-[#9b87f5]/20 bg-transparent text-[#C8C8C9]"
+                title="Сохранить"
+              >
+                <Download className="h-4 w-4" />
               </Button>
             </div>
-
-            <Button variant="outline" size="icon" onClick={saveImage}>
-              <Download className="h-4 w-4" />
-            </Button>
           </div>
 
-          {/* Canvas Container */}
-          <div className="relative border border-gray-200 rounded-lg overflow-hidden">
+          <div className="relative border border-[#332F3B] rounded-lg overflow-hidden bg-[#1A171E] p-4">
             <div
-              className="grid bg-white"
+              className="grid mx-auto"
               style={{
                 width: canvasSize.width * pixelSize,
                 height: canvasSize.height * pixelSize,
@@ -250,7 +269,7 @@ const Index = () => {
                 row.map((color, x) => (
                   <div
                     key={`${x}-${y}`}
-                    className="border border-gray-100 cursor-pointer"
+                    className="border border-[#332F3B]/30 cursor-crosshair transition-colors duration-150"
                     style={{
                       width: pixelSize,
                       height: pixelSize,
