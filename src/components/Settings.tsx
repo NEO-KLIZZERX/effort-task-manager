@@ -21,7 +21,7 @@ export const Settings = () => {
   const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (value: string) => {
-    i18n.changeLanguage(value);
+    void i18n.changeLanguage(value);
   };
 
   return (
@@ -39,7 +39,7 @@ export const Settings = () => {
           <div className="space-y-2">
             <label className="text-sm font-medium">{t('settings.language')}</label>
             <Select
-              value={i18n.language}
+              defaultValue={i18n.language}
               onValueChange={handleLanguageChange}
             >
               <SelectTrigger>
