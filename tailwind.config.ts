@@ -30,11 +30,11 @@ export default {
           high: "#F87171",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#9b87f5",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#7E69AB",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -46,7 +46,7 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#6E59A5",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -81,6 +81,9 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "task-appear": "task-appear 0.3s ease-out forwards",
+      },
+      backgroundImage: {
+        'gradient-soft': 'linear-gradient(60deg, #abecd6 0%, #fbed96 100%)',
       },
     },
   },

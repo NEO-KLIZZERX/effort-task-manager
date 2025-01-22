@@ -1,27 +1,26 @@
 {
   "app": {
-    "title": "EFFORT Планировщик Задач",
-    "subtitle": "От Eclipse Forge Studio",
+    "title": "EFFORT Task Manager",
+    "subtitle": "Эффективная организация задач",
     "addTask": "Добавить задачу",
-    "noTasks": "Пока нет задач. Создайте свою первую задачу!",
-    "priority": {
-      "low": "Низкий",
-      "medium": "Средний",
-      "high": "Высокий"
-    },
+    "noTasks": "Пока нет задач. Нажмите кнопку выше, чтобы добавить первую задачу.",
+    "taskTitle": "Название задачи",
     "description": "Описание",
     "subtasks": "Подзадачи",
-    "addSubtask": "Добавить подзадачу...",
-    "taskTitle": "Название задачи",
+    "addSubtask": "Добавить подзадачу",
     "deleteTask": "Удалить задачу",
-    "taskDeleted": "Задача удалена",
-    "taskDeletedDesc": "Задача была удалена из вашего списка"
+    "priority": {
+      "low": "Низкий приоритет",
+      "medium": "Средний приоритет",
+      "high": "Высокий приоритет"
+    }
   },
   "settings": {
     "title": "Настройки",
-    "language": "Язык",
     "theme": "Тема",
+    "language": "Язык",
+    "dark": "Тёмная",
     "light": "Светлая",
-    "dark": "Темная"
+    "system": "Системная"
   }
 }

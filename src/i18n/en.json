@@ -1,27 +1,26 @@
 {
   "app": {
     "title": "EFFORT Task Manager",
-    "subtitle": "By Eclipse Forge Studio",
+    "subtitle": "Organize your tasks efficiently",
     "addTask": "Add Task",
-    "noTasks": "No tasks yet. Create your first task!",
-    "priority": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
-    },
+    "noTasks": "No tasks yet. Click the button above to add your first task.",
+    "taskTitle": "Task title",
     "description": "Description",
     "subtasks": "Subtasks",
-    "addSubtask": "Add a subtask...",
-    "taskTitle": "Task title",
+    "addSubtask": "Add subtask",
     "deleteTask": "Delete task",
-    "taskDeleted": "Task deleted",
-    "taskDeletedDesc": "The task has been removed from your list"
+    "priority": {
+      "low": "Low Priority",
+      "medium": "Medium Priority",
+      "high": "High Priority"
+    }
   },
   "settings": {
     "title": "Settings",
-    "language": "Language",
     "theme": "Theme",
+    "language": "Language",
+    "dark": "Dark",
     "light": "Light",
-    "dark": "Dark"
+    "system": "System"
   }
 }

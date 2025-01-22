@@ -6,7 +6,11 @@ import { useTranslation } from "react-i18next";
 import { Settings } from "@/components/Settings";
 
 const Index = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+  
   const { toast } = useToast();
   const { t } = useTranslation();
 
@@ -19,19 +23,25 @@ const Index = () => {
       priority: "MEDIUM",
       subtasks: [],
     };
-    setTasks([newTask, ...tasks]);
+    const updatedTasks = [newTask, ...tasks];
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     toast({
       title: t('app.addTask'),
-      description: t('app.noTasks'),
+      description: t('app.taskTitle'),
     });
   };
 
   const handleUpdateTask = (updatedTask: Task) => {
-    setTasks(tasks.map((t) => (t.id === updatedTask.id ? updatedTask : t)));
+    const updatedTasks = tasks.map((t) => (t.id === updatedTask.id ? updatedTask : t));
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   const handleDeleteTask = (taskId: string) => {
-    setTasks(tasks.filter((t) => t.id !== taskId));
+    const updatedTasks = tasks.filter((t) => t.id !== taskId);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     toast({
       title: "Task deleted",
       description: "The task has been removed from your list.",
@@ -39,11 +49,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-soft">
       <Settings />
       <div className="text-center pt-8 pb-4">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">{t('app.title')}</h1>
-        <p className="text-gray-600 text-sm">{t('app.subtitle')}</p>
+        <h1 className="text-4xl font-bold text-primary mb-2">
+          {t('app.title')}
+        </h1>
+        <p className="text-gray-600 text-sm">
+          {t('app.subtitle')}
+        </p>
       </div>
       <TaskList
         tasks={tasks}
