@@ -25,20 +25,20 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         task: {
-          low: "#86efac",    // Более мягкий зеленый
-          medium: "#fdba74", // Более мягкий оранжевый
-          high: "#fca5a5",   // Более мягкий красный
+          low: "#86efac",
+          medium: "#fdba74",
+          high: "#fca5a5",
         },
         primary: {
-          DEFAULT: "#8B5CF6", // Яркий фиолетовый
+          DEFAULT: "#8B5CF6",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#A78BFA", // Светлый фиолетовый
+          DEFAULT: "#A78BFA",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "#EF4444", // Красный
+          DEFAULT: "#EF4444",
           foreground: "#FFFFFF",
         },
         muted: {
@@ -46,7 +46,7 @@ export default {
           foreground: "#6B7280",
         },
         accent: {
-          DEFAULT: "#7C3AED", // Темный фиолетовый
+          DEFAULT: "#7C3AED",
           foreground: "#FFFFFF",
         },
         popover: {
@@ -59,7 +59,7 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-app': 'linear-gradient(135deg, #C4B5FD 0%, #8B5CF6 100%)',
+        'gradient-app': 'linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(101, 31, 255, 0.1) 100%)',
       },
       borderRadius: {
         lg: "var(--radius)",

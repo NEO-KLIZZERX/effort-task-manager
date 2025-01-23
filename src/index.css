@@ -54,6 +54,90 @@
     @apply border-border;
   }
   body {
-    @apply bg-gradient-app min-h-screen text-foreground antialiased;
+    @apply bg-black text-foreground antialiased;
+    background: #000000e6;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    animation: blob-animation 15s infinite ease-in-out;
+    z-index: -1;
+  }
+
+  body::before {
+    background: radial-gradient(circle, #D946EF, #8B5CF6);
+    top: -100px;
+    left: -100px;
+  }
+
+  body::after {
+    background: radial-gradient(circle, #0EA5E9, #6E59A5);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -7.5s;
+  }
+
+  .blob {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.1;
+    z-index: -1;
+    animation: blob-float 20s infinite ease-in-out;
+  }
+
+  .blob-1 {
+    background: radial-gradient(circle, #9b87f5, #7E69AB);
+    top: 20%;
+    left: 30%;
+  }
+
+  .blob-2 {
+    background: radial-gradient(circle, #D6BCFA, #6E59A5);
+    top: 60%;
+    left: 60%;
+    animation-delay: -5s;
+  }
+
+  .blob-3 {
+    background: radial-gradient(circle, #8B5CF6, #1A1F2C);
+    top: 40%;
+    left: 45%;
+    animation-delay: -10s;
+  }
+
+  @keyframes blob-animation {
+    0%, 100% {
+      transform: scale(1) translate(0, 0);
+    }
+    50% {
+      transform: scale(1.2) translate(50px, 20px);
+    }
+  }
+
+  @keyframes blob-float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-30px, 30px);
+    }
+    50% {
+      transform: translate(30px, -30px);
+    }
+    75% {
+      transform: translate(30px, 30px);
+    }
   }
 }
