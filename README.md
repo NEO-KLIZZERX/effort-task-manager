@@ -13,6 +13,10 @@ Framework: React
 Database: Firebase (or specify the database used)
 Installation
 
+# URL
+
+**URL:** [ https://lovable.dev/projects/036cc7c4-25de-4ba0-9285-1564e4ac9faa ]
+
 ## Clone the repository:
 
 `git clone https://github.com/NEO-KLIZZERX/effort-task-manager.git`
