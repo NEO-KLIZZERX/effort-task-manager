@@ -25,29 +25,29 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         task: {
-          low: "#4ADE80",
-          medium: "#FB923C",
-          high: "#F87171",
+          low: "#86efac",    // Более мягкий зеленый
+          medium: "#fdba74", // Более мягкий оранжевый
+          high: "#fca5a5",   // Более мягкий красный
         },
         primary: {
-          DEFAULT: "#9b87f5",
+          DEFAULT: "#8B5CF6", // Яркий фиолетовый
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#7E69AB",
+          DEFAULT: "#A78BFA", // Светлый фиолетовый
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#EF4444", // Красный
+          foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#F3F4F6",
+          foreground: "#6B7280",
         },
         accent: {
-          DEFAULT: "#6E59A5",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#7C3AED", // Темный фиолетовый
+          foreground: "#FFFFFF",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -57,6 +57,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      backgroundImage: {
+        'gradient-app': 'linear-gradient(135deg, #C4B5FD 0%, #8B5CF6 100%)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -81,9 +84,6 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "task-appear": "task-appear 0.3s ease-out forwards",
-      },
-      backgroundImage: {
-        'gradient-soft': 'linear-gradient(60deg, #abecd6 0%, #fbed96 100%)',
       },
     },
   },

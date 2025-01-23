@@ -23,12 +23,14 @@ export const TaskList: React.FC<TaskListProps> = ({
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-semibold">{t('app.title')}</h1>
+        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+          EFFORT Task Manager
+        </h1>
         <Button
           onClick={onAddTask}
-          className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 shadow-sm transition-all duration-200"
+          className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-200"
         >
-          <PlusCircle className="w-5 h-5" />
+          <PlusCircle className="w-5 h-5 mr-2" />
           {t('app.addTask')}
         </Button>
       </div>
@@ -42,7 +44,7 @@ export const TaskList: React.FC<TaskListProps> = ({
           />
         ))}
         {tasks.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-gray-500 bg-white/50 rounded-lg backdrop-blur-sm">
             {t('app.noTasks')}
           </div>
         )}
