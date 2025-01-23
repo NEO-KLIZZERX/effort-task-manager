@@ -1,69 +1,32 @@
-# Welcome to your Lovable project
+#Effort Task Manager
+Effort Task Manager is a powerful and intuitive application designed to help users manage their tasks efficiently. This tool allows you to organize, prioritize, and track your daily tasks, enhancing your productivity and time management skills.
 
-## Project info
+#Features
+Task Creation and Management: Easily create, edit, and delete tasks to keep your to-do list up to date.
+Priority Levels: Assign priority levels to tasks to focus on what matters most.
+Due Dates and Reminders: Set deadlines for your tasks and receive notifications to ensure timely completion.
+User-Friendly Interface: Enjoy a clean and simple design that makes task management effortless.
+Progress Tracking: Monitor your progress on tasks to stay motivated and organized.
+Technologies Used
+Programming Language: JavaScript
+Framework: React
+Database: Firebase (or specify the database used)
+Installation
+Clone the repository:
 
-**URL**: https://lovable.dev/projects/036cc7c4-25de-4ba0-9285-1564e4ac9faa
+'git clone https://github.com/NEO-KLIZZERX/effort-task-manager.git'
+Navigate to the project directory:
 
-## How can I edit this code?
+'cd effort-task-manager'
+Install the required dependencies:
 
-There are several ways of editing your application.
+'npm install'
+Run the application:
 
-**Use Lovable**
+'npm start'
+Contributing
+Contributions are welcome! If you would like to contribute to the project, please fork the repository, make your changes, and submit a pull request.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/036cc7c4-25de-4ba0-9285-1564e4ac9faa) and start prompting.
+License
+This project is licensed under the MIT License.
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/036cc7c4-25de-4ba0-9285-1564e4ac9faa) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
